@@ -21,11 +21,6 @@ const MoveCard = ({movie:
             </div>
 
             <span>•</span>
-            <p className='lang'> {orginal_language} </p>
-
-            <span>•</span>
-
-            <p className='year'> {release_date ? release_date.split('-')[0]:'N/A'} </p>
           </div>
           </div> 
     </div>
