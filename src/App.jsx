@@ -14,7 +14,6 @@ const API_OPTIONS = {
   }
 };
 
-console.log(API_BASE_URL ) ;
 const App = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
