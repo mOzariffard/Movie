@@ -23,9 +23,7 @@ const App = () => {
     setIsLoading(true);
     setErrorMessage('');
     try {
-      const endpoint = query 
-      ? `${API_BASE_URL}/discover/movie?query=${encodeURIComponent}` 
-      :`${API_BASE_URL}/discover/movie?sort_by=popularity.desc`;  // Fixed endpoint URL
+      const endpoint = `${API_BASE_URL}/discover/movie?sort_by=popularity.desc`;  // Fixed endpoint URL
       const response = await fetch(endpoint, API_OPTIONS);
       
       if (!response.ok) {
@@ -39,7 +37,7 @@ const App = () => {
         setMovielist([]);
         return;
       }
-      setMovielist(data.results || []);
+      setMovielist(data.results);
 
     } catch (error) {
       console.error(`Error Fetching Movies: ${error}`);
@@ -50,7 +48,7 @@ const App = () => {
   };
 
   useEffect(() => {
-    fetchMovies(searchTerm);
+    fetchMovies();
   }, []);
 
   return (

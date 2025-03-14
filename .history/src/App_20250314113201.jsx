@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Search from "./components/Search.jsx";
 import Spinner from "./components/Spinner.jsx";
-
+import 'process';
 
 const API_BASE_URL = 'https://api.themoviedb.org/3';  // Remove /discover/movie from base URL
-const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
+console.log(process.env);
+const API_KEY = env.VITE_TMDB_API_KEY;
 const API_OPTIONS = {
   method: 'GET',
   headers: {

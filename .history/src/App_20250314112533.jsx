@@ -12,6 +12,7 @@ const API_OPTIONS = {
     Authorization: `Authorization: Bearer ${API_KEY}`
   }
 };
+console.log(API_OPTIONS);
 
 const App = () => {
   const [searchTerm, setSearchTerm] = useState('');

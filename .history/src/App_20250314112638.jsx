@@ -4,7 +4,7 @@ import Spinner from "./components/Spinner.jsx";
 
 
 const API_BASE_URL = 'https://api.themoviedb.org/3';  // Remove /discover/movie from base URL
-const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
+const API_KEY = import.meta.env.VITE_API_KEY;  // Fixed typo in 'VITE_API_KEY'
 const API_OPTIONS = {
   method: 'GET',
   headers: {
@@ -12,6 +12,7 @@ const API_OPTIONS = {
     Authorization: `Authorization: Bearer ${API_KEY}`
   }
 };
+console.log(API_OPTIONS);
 
 const App = () => {
   const [searchTerm, setSearchTerm] = useState('');

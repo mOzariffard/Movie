@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Search from "./components/Search.jsx";
 import Spinner from "./components/Spinner.jsx";
-
+import env from 'react-dotenv';
 
 const API_BASE_URL = 'https://api.themoviedb.org/3';  // Remove /discover/movie from base URL
 const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
