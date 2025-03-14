@@ -69,7 +69,7 @@ const App = () => {
         </header>
       </div>
       <section className="all-movies">
-        <h2> All Movies </h2>
+        <h2 className="flex items-center"> All Movies </h2>
         {isLoading ? (
           <Spinner />
         ) : errorMessage ? (
