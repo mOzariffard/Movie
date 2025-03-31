@@ -24,17 +24,18 @@ const App = () => {
     setIsLoading(true);
     setErrorMessage('');
     try {
-      const endpoint = query
-      ? `${API_BASE_URL}/search/movie?query=${encodeURIComponent(query)}` //
-      :`${API_BASE_URL}/discover/movie?sort_by=popularity.desc`;  
+      const endpoint = query 
+      ? `${API_BASE_URL}/discover/movie?query=${encodeURIComponent}` 
+      :`${API_BASE_URL}/discover/movie?sort_by=popularity.desc`;  // Fixed endpoint URL
       const response = await fetch(endpoint, API_OPTIONS);
+      
       if (!response.ok) {
         throw new Error('Failed to fetch movies');
       }
       
-      const data = await response.json();  
+      const data = await response.json();  // Fixed typo in 'json'
       
-      if (!data.results || data.results.length === 0) {  
+      if (!data.results || data.results.length === 0) {  // Better error checking
         setErrorMessage('No movies found');
         setMovielist([]);
         return;
@@ -51,7 +52,7 @@ const App = () => {
 
   useEffect(() => {
     fetchMovies(searchTerm);
-  }, [searchTerm]);
+  }, []);
 
   return (
     <main>

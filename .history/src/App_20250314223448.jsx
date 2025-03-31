@@ -24,10 +24,11 @@ const App = () => {
     setIsLoading(true);
     setErrorMessage('');
     try {
-      const endpoint = query
-      ? `${API_BASE_URL}/search/movie?query=${encodeURIComponent(query)}` //
+      const endpoint = query 
+      ? `${API_BASE_URL}/discover/movie?query=${encodeURIComponent}` 
       :`${API_BASE_URL}/discover/movie?sort_by=popularity.desc`;  
       const response = await fetch(endpoint, API_OPTIONS);
+      
       if (!response.ok) {
         throw new Error('Failed to fetch movies');
       }
