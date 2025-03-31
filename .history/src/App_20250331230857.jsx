@@ -53,8 +53,8 @@ const App = () => {
   };
 
   useEffect(() => {
-    fetchMovies(debouncedSearchTerm);
-  }, [debouncedSearchTerm]);
+    fetchMovies(searchTerm);
+  }, [searchTerm]);
 
   return (
     <main>
