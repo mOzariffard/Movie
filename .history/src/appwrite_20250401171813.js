@@ -1,3 +1,4 @@
+import { Databases } from "appwrite";
 import { Client , Databases , Query , ID } from "appwrite";
 
 const PROJECT_ID=import.meta.env.local.VITE_APPWRITE_PROJECT_ID;
@@ -19,13 +20,7 @@ export const updateSearchCount= async(searchTerm , movie) => {
             const doc=result.documents[0];
         await database.updateDocument(DATABASE_ID, COLLECTION_ID, doc.$id ,{count: doc.count +1});
         }else{
-            await database.createDocument(DATABASE_ID,COLLECTION_ID,ID.unique(),
-            {
-                searchTerm, count:1 , 
-                movie_id: movie.id , 
-                poster_url:`https://image.tmdb.org/t/p/w500/${poster_path}`,
-            }
-    );
+            await database.createDocument(DATABASE_ID,COLLECTION_ID,ID.unique(),{searchTerm, count:1 , movie_id: movie.id} , poster_url=`https://image.tmdb.org/t/p/w500/${poster_path}`,);
         }
     }catch(error){
         console.error('Error updating search count:', error);
