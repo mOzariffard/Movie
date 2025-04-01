@@ -45,7 +45,7 @@ const App = () => {
       }
       setMovielist(data.results || []);
 
-      updateSearchCount()
+      // updateSearchCount()
     } catch (error) {
       console.error(`Error Fetching Movies: ${error}`);
       setErrorMessage(`Error Fetching Movies: Try Again Later.`);

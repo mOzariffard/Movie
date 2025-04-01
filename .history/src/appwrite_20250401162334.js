@@ -1,0 +1,1 @@
+const DATABASE_ID=import.env.local.VITE_APPWRITE_DATABASE_ID;
