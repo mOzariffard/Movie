@@ -3,7 +3,7 @@ import Search from "./components/Search.jsx";
 import Spinner from "./components/Spinner.jsx";
 import MovieCard from "./components/MovieCard.jsx";
 import { useDebounce}  from "react-use";
-import { getTrendingMovies ,updateSearchCount } from "./appwrite.js";
+import { updateSearchCount } from "./appwrite.js";
 
 const API_BASE_URL = 'https://api.themoviedb.org/3';  // Remove /discover/movie from base URL
 const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
@@ -61,12 +61,12 @@ const App = () => {
   // trending movies
   const loadTrendingMovies = async () => {
     try{
-      const movies = await getTrendingMovies();
 
-      setTrendingMovies(movies);
     }
     catch(error){
     console.error(`Error Fetching Trending Movies: ${error}`);
+    setErrorMessage(`Error Fetching Trending Movies.`);
+
     }
   }
 
@@ -74,10 +74,6 @@ const App = () => {
   useEffect(() => {
     fetchMovies(debouncedSearchTerm);
   }, [debouncedSearchTerm]);
-
-  useEffect(() => {
-    loadTrendingMovies();
-  },[]);
 
   return (
     <main>
@@ -92,37 +88,22 @@ const App = () => {
           </h1>
           <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
         </header>
-
-        {trendingMovies.length > 0 && (
-          <section className="trending">
-            <h2>Trending Movies</h2>
-            <ul>
-              {trendingMovies.map((movie, index) => (
-                <li key={movie.$id || index}>
-                  <p>{index + 1}</p>
-                  <img src={movie.poster_url} alt={movie.title} />
-                </li>
-              ))}
-            </ul>
-          </section>
-        )}
-
-        <section className="all-movies">
-          <h2> All Movies </h2>
-
-          {isLoading ? (
-            <Spinner />
-          ) : errorMessage ? (
-            <p className="text-red-500">{errorMessage}</p>
-          ) : (
-            <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {movieList.map((movie) => (
-                <MovieCard key={movie.id} movie={movie} />
-              ))}
-            </ul>
-          )}
-        </section>
       </div>
+      <section className="all-movies">
+        <h2> All Movies </h2>
+        {isLoading ? (
+          <Spinner />
+        ) : errorMessage ? (
+          <p className="text-red-500">{errorMessage}</p>
+        ) : 
+        (
+          <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {movieList.map((movie) => (
+                <MovieCard key={movie.id} movie={movie} />                
+              ))}
+          </ul>
+        )}
+      </section>
     </main>
   );
 };

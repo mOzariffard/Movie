@@ -57,7 +57,7 @@ export const getTrendingMovies= async() =>{
             [Query.limit(5),
              Query.orderDesc("count")
             ]
-            );
+            )
             return result.documents;
     }
     catch(error){
