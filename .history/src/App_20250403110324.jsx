@@ -60,7 +60,7 @@ const App = () => {
 
   // trending movies
   const loadTrendingMovies = async () => {
-    
+    setTrendingLoading(true);
     try{
       const movies = await getTrendingMovies();
 
