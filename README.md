@@ -1,5 +1,4 @@
 # Movie
-<h1> <a href="https://mOzariffard.github.io/Movie"> Demo </a> </h1>
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
